@@ -1,18 +1,19 @@
 import java.util.Random;
-
 import javax.swing.JOptionPane;
 
 public class GuessNumberGame {
 
 	public static void main(String[] args) {
 
+		final int ALLOWED_ATTEMPTS = 5;
+		
 		int attempts = 0;
 		Random rnd = new Random();
 		int randNum = rnd.nextInt(101);
+				
+		while (attempts <= ALLOWED_ATTEMPTS) {
 
-		while (attempts <= 5) {
-
-			if (attempts == 5) {
+			if (attempts == ALLOWED_ATTEMPTS) {
 				System.out.println("You are out of guesses, the random number was " + randNum);
 				attempts++;
 			}
@@ -22,7 +23,7 @@ public class GuessNumberGame {
 
 				if (userGuess == randNum) {
 					System.out.println("You guessed correctly on attempt #" + (attempts + 1));
-					attempts = 6;
+					attempts = (ALLOWED_ATTEMPTS + 1);
 				}
 				else if (userGuess > randNum) {
 					System.out.println("Your guess is higher than the random number");
@@ -35,5 +36,4 @@ public class GuessNumberGame {
 			}
 		}
 	}
-
 }
