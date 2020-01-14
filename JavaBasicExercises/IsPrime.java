@@ -20,6 +20,7 @@ public class IsPrime {
 				while (index * index <= userNum) {
 					if (userNum % index == 0 || userNum % (index + 2) == 0) {
 						isPrime = false;
+						break;
 					}
 					else {
 						index = index + 6;
