@@ -1,5 +1,5 @@
 
-public class IsPalindromeRecursion {
+public class IsArrayPalindromeRecursion {
 	public static boolean isPalindrome(int[] array, int start, int end) {
 		
 	    if(array.length == 0 || array.length == 1)

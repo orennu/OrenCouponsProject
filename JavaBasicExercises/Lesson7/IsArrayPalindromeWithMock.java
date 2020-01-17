@@ -1,4 +1,4 @@
-public class IsPalindromeWithMock {
+public class IsArrayPalindromeWithMock {
 
 	public static void main(String[] args) {
 
