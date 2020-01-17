@@ -11,7 +11,7 @@ public class Division {
 		
 		if (denumerator == 0) {
 			System.out.println("cannot divide by 0");
-			denumerator = 0;
+			return;
 		}
 		
 		int userNumerator = numerator;
