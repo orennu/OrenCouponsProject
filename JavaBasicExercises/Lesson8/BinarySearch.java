@@ -93,7 +93,5 @@ public class BinarySearch {
 			JOptionPane.showMessageDialog(null, "Did not find " + num + " in sorted array ("
 					+ arr[0] + "-" + arr[arrayLength - 1] + ")", "Binary search", JOptionPane.INFORMATION_MESSAGE);
 		}
-		
-
 	}
 }
