@@ -6,7 +6,7 @@ public class ClassWithConstructor {
 	public int attr2;
 	public boolean attr3;
 	
-	// Constructor
+	// Class Constructor (Ctor)
 	public ClassWithConstructor(String attr1, int attr2, boolean attr3) {
 		
 		// Copying local variables to class variables
