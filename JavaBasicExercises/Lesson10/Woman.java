@@ -6,6 +6,7 @@ public class Woman {
 	public int realAge;
 	
 	public Woman(String name, int age) {
+		
 		this.name = name;
 		if (age >= 30) {
 			this.realAge = age + 5;
