@@ -6,8 +6,8 @@ public class CountRepeatedNumberInSortedArray {
 
 	public static void main(String[] args) {
 
-		int[] arr = {1, 2, 2, 3, 4, 4, 4, 4, 4, 5};
-
+//		int[] arr = {1, 2, 2, 3, 4, 4, 4, 4, 4, 5};
+		int[] arr = {3,3,3,3,3,3,3,3,3,3};
 		String strNumberToSearch = JOptionPane.showInputDialog(null, "Enter a number to search",
 				"Number in array counter", JOptionPane.INFORMATION_MESSAGE);
 		int numberToSearch = Integer.parseInt(strNumberToSearch);
@@ -68,12 +68,17 @@ public class CountRepeatedNumberInSortedArray {
 		while (leftBorder <= rightBorder) {
 			int center = leftBorder + (rightBorder - leftBorder) / 2;
 			if (number == array[center]) {
-				if (number == array[center + direction]) {
-					if (direction > 0) {
-						leftBorder = center + direction;
+				if (center < rightBorder) {
+					if (number == array[center + direction]) {
+						if (direction > 0) {
+							leftBorder = center + direction;
+						}
+						else {
+							rightBorder = center + direction;
+						}
 					}
 					else {
-						rightBorder = center + direction;
+						return center;
 					}
 				}
 				else {
