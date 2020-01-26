@@ -6,8 +6,9 @@ public class CountRepeatedNumberInSortedArray {
 
 	public static void main(String[] args) {
 
-//		int[] arr = {1, 2, 2, 3, 4, 4, 4, 4, 4, 5};
-		int[] arr = {3,3,3,3,3,3,3,3,3,3};
+		int[] arr = {1, 2, 2, 3, 4, 4, 4, 4, 4, 5};
+//		int[] arr = {3,3,3,3,3,3,3,3,3,3};
+//		int[] arr = {1};
 		String strNumberToSearch = JOptionPane.showInputDialog(null, "Enter a number to search",
 				"Number in array counter", JOptionPane.INFORMATION_MESSAGE);
 		int numberToSearch = Integer.parseInt(strNumberToSearch);
