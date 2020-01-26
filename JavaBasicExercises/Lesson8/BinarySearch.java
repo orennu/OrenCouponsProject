@@ -7,20 +7,18 @@ public class BinarySearch {
 		boolean isNumberFound = false;
 		int leftBorder = 0;
 		int rightBorder = array.length - 1;
-		int center = (rightBorder + leftBorder) / 2;
 
-		while (leftBorder != rightBorder) {
+		while (leftBorder <= rightBorder) {
+			int center = leftBorder + (rightBorder - leftBorder) / 2;
 			if (number == array[center]) {
 				isNumberFound = true;
 				return isNumberFound;
 			}
 			if (number > array[center]) {
 				leftBorder = center + 1;
-				center = (rightBorder + leftBorder) / 2;
 			}
-			else if (number < array[center]) {
-				rightBorder = center;
-				center = (rightBorder + leftBorder) / 2;
+			else {
+				rightBorder = center - 1;
 			}
 		}
 
@@ -43,16 +41,16 @@ public class BinarySearch {
 
 		return numArray;
 	}
-	
-	
+
+
 	public static int[] generateSortedArray(int arrayLength) {
-		
+
 		int[] numArray = new int[arrayLength];
-		
+
 		for (int index = 0; index < arrayLength; index++) {
 			numArray[index] = index + 1;
 		}
-		
+
 		return numArray;
 	}
 
@@ -60,11 +58,11 @@ public class BinarySearch {
 	public static void main(String[] args) {
 
 		int[] arr = {};
-		
+
 		String strArrayLength = JOptionPane.showInputDialog(null, "Enter array length",
 				"Binary search", JOptionPane.INFORMATION_MESSAGE);
 		int arrayLength = Integer.parseInt(strArrayLength);
-		
+
 		int userArrayTypeSelection = JOptionPane.showConfirmDialog(null, "Generate an array? (Y/N)",
 				"Binary search", JOptionPane.INFORMATION_MESSAGE);
 		if (userArrayTypeSelection == JOptionPane.YES_OPTION) {
@@ -78,13 +76,13 @@ public class BinarySearch {
 					"Binary search", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
-		
+
 		String strNum = JOptionPane.showInputDialog(null, "Enter number to search",
 				"Binary search", JOptionPane.INFORMATION_MESSAGE);
 		int num = Integer.parseInt(strNum);
-		
+
 		boolean isNumberFound = binarySearch(arr, num);
-		
+
 		if (isNumberFound) {
 			JOptionPane.showMessageDialog(null, "Found " + num + " in sorted array ("
 					+ arr[0] + "-" + arr[arrayLength - 1] + ")", "Binary search", JOptionPane.INFORMATION_MESSAGE);
