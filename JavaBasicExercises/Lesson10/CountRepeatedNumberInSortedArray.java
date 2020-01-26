@@ -67,6 +67,7 @@ public class CountRepeatedNumberInSortedArray {
 		int rightBorder = array.length - 1;
 		
 		while (leftBorder <= rightBorder) {
+			
 			int center = leftBorder + (rightBorder - leftBorder) / 2;
 			if (number == array[center]) {
 				if (center < rightBorder) {
