@@ -11,10 +11,12 @@ public class Matrixes {
 	private int[][] checkLastRowFirstColNotAscending = {{1, 2, 3}, {4, 5, 6}, {5, 8, 9}};
 	private int[][] checkLastColLastRowNotAscending = {{1, 2}, {4, 5}, {7, 8}, {10, 6}};
 	private int[][] checkAllCellsSame = {{2, 2}, {2, 2}, {2, 2}};
-	int[][][] matrixMocksArray = {this.checkAscending, this.checkFirstCellNotAscending,
+	public int[][][] matrixMocksArray = {this.checkAscending, this.checkFirstCellNotAscending,
 			this.checkLastColFirstRowNotAscending, this.checkLastColSecondRowNotAscending,
 			this.checkSecondRowNotAscending, this.checkLastRowFirstColNotAscending, 
 			this.checkLastColLastRowNotAscending, this.checkAllCellsSame};
+	public int[][] checkRowSumMatrix = {{10, 10, 10, 10, 10}, {13, 23, 5, 9, 20}, {100, -15, 0, 1, 1},
+			{75, 28, 99, 48, 53}};
 
 
 	public void randomMatrix(int size) {
@@ -52,6 +54,40 @@ public class Matrixes {
 		
 		return true;
 	}
+	
+	public void checkRowSum(int[][] matrix, int num) {
+		
+		for (int row = 0; row < matrix.length; row++) {
+			int rowSum = 0;
+			for (int col = 0; col < matrix[0].length; col++) {
+				rowSum = rowSum + matrix[row][col];
+				if (col == matrix[0].length - 1) {
+					if (num == rowSum) {
+						System.out.println("row " + (row + 1) + " sum equals given number " + num);
+						return;
+					}
+				}
+			}
+		}
+		System.out.println("no rows with sum " + num + " found");
+	}
+	
+	public void checkColumnSum(int[][] matrix, int num) {
+
+		for (int row = 0; row < matrix[0].length; row++) {
+			int colSum = 0;
+			for (int col = 0; col < matrix.length; col++) {
+				colSum = colSum + matrix[col][row];
+				if (col == matrix.length - 1) {
+					if (num == colSum) {
+						System.out.println("column " + (row + 1) + " sum equals given number " + num);
+						return;
+					}
+				}
+			}
+		}
+		System.out.println("no columns with sum " + num + " found");
+	}
 
 	public boolean isMatrixSymetricPrimaryDiagonal(int[][] matrix) {
 
@@ -74,6 +110,15 @@ public class Matrixes {
 
 		return num;
 	}
-
-
+	
+	public void prettyPrintMatrix(int[][] matrix) {
+		
+		for (int row = 0; row < matrix.length; row++) {
+			for (int col = 0; col < matrix[row].length; col++) {
+				System.out.print(" " + matrix[row][col] + " ");
+			}
+			System.out.println("");
+		}
+		System.out.println("");
+	}
 }
