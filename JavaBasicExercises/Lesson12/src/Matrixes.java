@@ -2,34 +2,22 @@ import java.util.Collections;
 import java.util.Random;
 
 public class Matrixes {
-	public static void main(String[] args) {
 
-		// Execute Random Matrix 
-		randomMatrix(2);
+	private int[][] checkAscending = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9} };
+	private int[][] checkFirstCellNotAscending = {{9, 2}, {4, 5},	{7, 8}};
+	private int[][] checkLastColFirstRowNotAscending = {{1, 2, 3, 0}, {4, 5, 6, 7}, {8, 9, 10, 11}};
+	private int[][] checkLastColSecondRowNotAscending = {{1, 2, 3, 4, 5}, {1, 7, 8, 9, 10}};
+	private int[][] checkSecondRowNotAscending = {{1, 2, 3, 4}, {5, 0, 7, 8}, {9, 10, 11, 12}};
+	private int[][] checkLastRowFirstColNotAscending = {{1, 2, 3}, {4, 5, 6}, {5, 8, 9}};
+	private int[][] checkLastColLastRowNotAscending = {{1, 2}, {4, 5}, {7, 8}, {10, 6}};
+	private int[][] checkAllCellsSame = {{2, 2}, {2, 2}, {2, 2}};
+	int[][][] matrixMocksArray = {this.checkAscending, this.checkFirstCellNotAscending,
+			this.checkLastColFirstRowNotAscending, this.checkLastColSecondRowNotAscending,
+			this.checkSecondRowNotAscending, this.checkLastRowFirstColNotAscending, 
+			this.checkLastColLastRowNotAscending, this.checkAllCellsSame};
 
-		// Execute Is Matrix Ascending
 
-		MatrixMocks matrixMocks = new MatrixMocks();
-		int[][] checkAscending = matrixMocks.checkAscending;
-		int[][] checkFirstCellNotAscending = matrixMocks.checkFirstCellNotAscending;
-		int[][] checkLastColFirstRowNotAscending = matrixMocks.checkLastColFirstRowNotAscending;
-		int[][] checkLastColSecondRowNotAscending = matrixMocks.checkLastColSecondRowNotAscending;
-		int[][] checkSecondRowNotAscending = matrixMocks.checkSecondRowNotAscending;
-		int[][] checkLastRowFirstColNotAscending = matrixMocks.checkLastRowFirstColNotAscending;
-		int[][] checkLastColLastRowNotAscending = matrixMocks.checkLastColLastRowNotAscending;
-		int[][] checkAllCellsSame = matrixMocks.checkAllCellsSame;
-
-		int[][][] matrixMocksArray = {checkAscending, checkFirstCellNotAscending, 
-				checkLastColFirstRowNotAscending, checkLastColSecondRowNotAscending, 
-				checkSecondRowNotAscending, checkLastRowFirstColNotAscending,
-				checkLastColLastRowNotAscending, checkAllCellsSame};
-
-		for (int matrix = 0; matrix < matrixMocksArray.length; matrix++) {
-			System.out.println(isMatrixAscending(matrixMocksArray[matrix]));
-		}
-	}
-
-	public static void randomMatrix(int size) {
+	public void randomMatrix(int size) {
 
 		int matrix[][] = new int[size][size];
 
@@ -44,7 +32,7 @@ public class Matrixes {
 		System.out.println(String.join("", Collections.nCopies((size * 6) + 1, "-")));
 	}
 
-	public static boolean isMatrixAscending(int[][] matrix) {
+	public boolean isMatrixAscending(int[][] matrix) {
 
 		for (int row = 0; row < matrix.length; row++) {
 			for (int col = 0; col < matrix[0].length - 1; col++) {
@@ -61,28 +49,31 @@ public class Matrixes {
 				}
 			}
 		}
+		
 		return true;
 	}
 
-	public static boolean isMatrixSymetricPrimaryDiagonal(int[][] matrix) {
+	public boolean isMatrixSymetricPrimaryDiagonal(int[][] matrix) {
 
 		// code goes here
 
 		return true;
 	}
 
-	public static boolean isMatrixSymetricSecondaryDiagonal(int[][] matrix) {
+	public boolean isMatrixSymetricSecondaryDiagonal(int[][] matrix) {
 
 		// code goes here
 
 		return true;
 	}
 
-	private static int randomThreeDigitInt() {
+	private int randomThreeDigitInt() {
 
 		Random randNum = new Random();
 		int num = randNum.nextInt(899) + 100;
 
 		return num;
 	}
+
+
 }
