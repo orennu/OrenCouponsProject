@@ -15,11 +15,14 @@ public class Matrixes {
 			this.checkLastColFirstRowNotAscending, this.checkLastColSecondRowNotAscending,
 			this.checkSecondRowNotAscending, this.checkLastRowFirstColNotAscending, 
 			this.checkLastColLastRowNotAscending, this.checkAllCellsSame};
-	public int[][] checkRowSumMatrix = {{10, 10, 10, 10, 10}, {13, 23, 5, 9, 20}, {100, -15, 0, 1, 1},
+	public int[][] checkRowSumMatrix = {{10, 10, 10, 10, 10}, {13, 43, 5, 9, 44}, {100, -15, 0, 1, 1},
 			{75, 28, 99, 48, 53}};
+	public int[][] checkMatricesMultiplyFPFirstMatrix = {{1, 2}, {3, 4}};
+	public int[][] checkMatricesMultiplyFPSecondMatrix = {{1, 1, 1}, {1, 1, 1}, {1, 1, 1}};
+	
 
 
-	public void randomMatrix(int size) {
+	public void randomSquareMatrix(int size) {
 
 		int matrix[][] = new int[size][size];
 
@@ -103,10 +106,47 @@ public class Matrixes {
 		return true;
 	}
 
+	public int[][] multiplyMatrices(int[][] firstMatrix, int[][] secondMatrix) {
+		
+		// validate matrices can be multiplied
+		if (firstMatrix[0].length != secondMatrix.length) {
+			System.out.println("Error: number of columns on first matrix must equal number of rows on second matrix");
+			return null;
+		}
+		
+		int[][] dotProductMatrix = new int[firstMatrix.length][secondMatrix[0].length];
+		
+		for (int row = 0; row < dotProductMatrix.length; row++) {
+			for (int col = 0; col < dotProductMatrix[row].length; col++) {
+				dotProductMatrix[row][col] = multiplyMatricesCells(firstMatrix, secondMatrix, row, col);
+			}
+		}
+		return dotProductMatrix;
+	}
+
+	private int multiplyMatricesCells(int[][] firstMatrix, int[][] secondMatrix, int row, int col) {
+		
+		int cell = 0;
+		
+		for (int i = 0; i < secondMatrix.length; i++) {
+			cell += firstMatrix[row][i] * secondMatrix[i][col];
+		}
+		
+		return cell;
+	}
+
 	private int randomThreeDigitInt() {
 
 		Random randNum = new Random();
 		int num = randNum.nextInt(899) + 100;
+
+		return num;
+	}
+	
+	private int randomNumber() {
+
+		Random randNum = new Random();
+		int num = randNum.nextInt(10);
 
 		return num;
 	}
@@ -121,4 +161,17 @@ public class Matrixes {
 		}
 		System.out.println("");
 	}
+	
+	public int[][] randomMatrix(int rows, int cols) {
+		
+		int[][] matrix = new int[rows][cols];
+		for (int row = 0; row < matrix.length; row++) {
+			for (int col = 0; col < matrix[0].length; col++) {
+				matrix[row][col] = randomNumber();
+			}
+		}
+		
+		return matrix;
+	}
+	
 }
