@@ -35,6 +35,7 @@ public class MainLesson13 {
 		matrixes.prettyPrintMatrix(checkMatricesMultiplyFPSecondMatrix);
 		matrixes.multiplyMatrices(checkMatricesMultiplyFPFirstMatrix, checkMatricesMultiplyFPSecondMatrix);
 		
+		// Execute check matrix ascending with recursion
 		System.out.println("\nCheck if matrixes ascending recursion\n=====================================");
 		int[][][] matrixMocksArray = matrixes.matrixMocksArray;
 
