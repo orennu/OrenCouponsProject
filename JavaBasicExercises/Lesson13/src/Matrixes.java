@@ -4,7 +4,7 @@ import java.util.Random;
 public class Matrixes {
 
 	private int[][] checkAscending = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9} };
-	private int[][] checkFirstCellNotAscending = {{9, 2}, {4, 5},	{7, 8}};
+	private int[][] checkFirstCellNotAscending = {{9, 2}, {4, 5}, {7, 8}};
 	private int[][] checkLastColFirstRowNotAscending = {{1, 2, 3, 0}, {4, 5, 6, 7}, {8, 9, 10, 11}};
 	private int[][] checkLastColSecondRowNotAscending = {{1, 2, 3, 4, 5}, {1, 7, 8, 9, 10}};
 	private int[][] checkSecondRowNotAscending = {{1, 2, 3, 4}, {5, 0, 7, 8}, {9, 10, 11, 12}};
@@ -19,7 +19,6 @@ public class Matrixes {
 			{75, 28, 99, 48, 53}};
 	public int[][] checkMatricesMultiplyFPFirstMatrix = {{1, 2}, {3, 4}};
 	public int[][] checkMatricesMultiplyFPSecondMatrix = {{1, 1, 1}, {1, 1, 1}, {1, 1, 1}};
-	
 
 
 	public void randomSquareMatrix(int size) {
@@ -56,6 +55,30 @@ public class Matrixes {
 		}
 		
 		return true;
+	}
+	
+	public boolean isMatrixAscendingRecursion(int[][] matrix, int row, int col) {
+		
+		
+		if (row == 0 && col == 0) {
+			return true;
+		}		
+		
+		if (matrix[row][col] < matrix[row][col - 1]) {
+			return false;
+		}
+		
+		col = col - 1;
+		
+		if (col == 0 && row != 0) {
+			if (matrix[row][col] < matrix[row - 1][matrix[0].length - 1]) {
+				return false;
+			}
+			row = row - 1;
+			col = matrix[0].length - 1;
+		}
+		
+		return isMatrixAscendingRecursion(matrix, row, col);
 	}
 	
 	public void checkRowSum(int[][] matrix, int num) {

@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import javax.swing.JOptionPane;
 
 public class MainLesson13 {
@@ -33,5 +34,15 @@ public class MainLesson13 {
 		System.out.println("second matrix\n=============");
 		matrixes.prettyPrintMatrix(checkMatricesMultiplyFPSecondMatrix);
 		matrixes.multiplyMatrices(checkMatricesMultiplyFPFirstMatrix, checkMatricesMultiplyFPSecondMatrix);
+		
+		System.out.println("\nCheck if matrixes ascending recursion\n=====================================");
+		int[][][] matrixMocksArray = matrixes.matrixMocksArray;
+
+		for (int matrix = 0; matrix < matrixMocksArray.length; matrix++) {
+			int row = matrixMocksArray[matrix].length - 1;
+			int col = matrixMocksArray[matrix][0].length - 1;
+			System.out.println(Arrays.deepToString(matrixMocksArray[matrix]) + ": "
+					+ matrixes.isMatrixAscendingRecursion(matrixMocksArray[matrix], row, col));
+		}
 	}
 }
