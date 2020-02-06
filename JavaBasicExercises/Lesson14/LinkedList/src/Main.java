@@ -19,8 +19,13 @@ public class Main {
 		
 		/*
 		 * uncomment to test isCyclic
-		node5.setNext(node1);
+		 * node5.setNext(node1);
 		*/
+		
+		/*
+		 *  uncomment to test hasLoop
+		 *  node5.setNext(node3);
+		 */
 		
 		// Print values of linked list nodes in order (from head to tail)
 		printHeaders("Executing print");
@@ -44,7 +49,27 @@ public class Main {
 		
 		// Print if linked list is cyclic
 		printHeaders("Executing isCyclic");
-		System.out.println(isCyclic(node3));
+		System.out.println(isCyclic(node1));
+		
+		// Print if linked list is cyclic
+		printHeaders("Executing hasLoop");
+		System.out.println(hasLoop(node1));
+	}
+
+	private static boolean hasLoop(Node node) {
+		
+		Node slow = node;
+		Node fast = node;
+		
+		while(slow != null && fast != null && fast.getNext() != null) {
+			slow = slow.getNext();
+			fast = fast.getNext().getNext();
+			if (slow == fast) {
+				return true;
+			}
+		}
+		
+		return false;
 	}
 
 	private static boolean isCyclic(Node node) {
