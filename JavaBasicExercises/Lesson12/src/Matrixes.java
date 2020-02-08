@@ -23,7 +23,7 @@ public class Matrixes {
 			{78, 100, 3, -555}, {-67, 0, -555, 4}};
 	public int[][] checkMatrixSymmetricSecondaryDiagonal = {{5, 12, 66, 1}, {19, 33, 2, 66}, 
 			{0, 3, 33, 12}, {4, 0, 19, 5}};
-	
+
 
 	public void randomSquareMatrix(int size) {
 
@@ -57,23 +57,23 @@ public class Matrixes {
 				}
 			}
 		}
-		
+
 		return true;
 	}
-	
+
 	public boolean isMatrixAscendingRecursion(int[][] matrix, int row, int col) {
-		
-		
+
+
 		if (row == 0 && col == 0) {
 			return true;
 		}		
-		
+
 		if (matrix[row][col] < matrix[row][col - 1]) {
 			return false;
 		}
-		
+
 		col = col - 1;
-		
+
 		if (col == 0 && row != 0) {
 			if (matrix[row][col] < matrix[row - 1][matrix[0].length - 1]) {
 				return false;
@@ -81,12 +81,12 @@ public class Matrixes {
 			row = row - 1;
 			col = matrix[0].length - 1;
 		}
-		
+
 		return isMatrixAscendingRecursion(matrix, row, col);
 	}
-	
+
 	public void checkRowSum(int[][] matrix, int num) {
-		
+
 		for (int row = 0; row < matrix.length; row++) {
 			int rowSum = 0;
 			for (int col = 0; col < matrix[0].length; col++) {
@@ -101,7 +101,7 @@ public class Matrixes {
 		}
 		System.out.println("no rows with sum " + num + " found");
 	}
-	
+
 	public void checkColumnSum(int[][] matrix, int num) {
 
 		for (int row = 0; row < matrix[0].length; row++) {
@@ -146,15 +146,15 @@ public class Matrixes {
 	}
 
 	public int[][] multiplyMatrices(int[][] firstMatrix, int[][] secondMatrix) {
-		
+
 		// validate matrices can be multiplied
 		if (firstMatrix[0].length != secondMatrix.length) {
 			System.out.println("Error: number of columns on first matrix must equal number of rows on second matrix");
 			return null;
 		}
-		
+
 		int[][] dotProductMatrix = new int[firstMatrix.length][secondMatrix[0].length];
-		
+
 		for (int row = 0; row < dotProductMatrix.length; row++) {
 			for (int col = 0; col < dotProductMatrix[row].length; col++) {
 				dotProductMatrix[row][col] = multiplyMatricesCells(firstMatrix, secondMatrix, row, col);
@@ -164,13 +164,13 @@ public class Matrixes {
 	}
 
 	private int multiplyMatricesCells(int[][] firstMatrix, int[][] secondMatrix, int row, int col) {
-		
+
 		int cell = 0;
-		
+
 		for (int i = 0; i < secondMatrix.length; i++) {
 			cell += firstMatrix[row][i] * secondMatrix[i][col];
 		}
-		
+
 		return cell;
 	}
 
@@ -181,7 +181,7 @@ public class Matrixes {
 
 		return num;
 	}
-	
+
 	private int randomNumber() {
 
 		Random randNum = new Random();
@@ -189,9 +189,9 @@ public class Matrixes {
 
 		return num;
 	}
-	
+
 	public void prettyPrintMatrix(int[][] matrix) {
-		
+
 		for (int row = 0; row < matrix.length; row++) {
 			for (int col = 0; col < matrix[row].length; col++) {
 				System.out.print(" " + matrix[row][col] + " ");
@@ -200,17 +200,17 @@ public class Matrixes {
 		}
 		System.out.println("");
 	}
-	
+
 	public int[][] randomMatrix(int rows, int cols) {
-		
+
 		int[][] matrix = new int[rows][cols];
 		for (int row = 0; row < matrix.length; row++) {
 			for (int col = 0; col < matrix[0].length; col++) {
 				matrix[row][col] = randomNumber();
 			}
 		}
-		
+
 		return matrix;
 	}
-	
+
 }
