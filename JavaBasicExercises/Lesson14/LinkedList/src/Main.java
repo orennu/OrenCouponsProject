@@ -51,9 +51,27 @@ public class Main {
 		printHeaders("Executing isCyclic");
 		System.out.println(isCyclic(node1));
 		
-		// Print if linked list is cyclic
+		// Print if linked list has loop
 		printHeaders("Executing hasLoop");
 		System.out.println(hasLoop(node1));
+		
+		// Print remove last item from linked list
+		printHeaders("Executing removeLastNode");
+		System.out.println("Linked list before:\n-------------------");
+		print(node1);
+		removeLastNode(node3);
+		System.out.println("\nLinked list after:\n------------------");
+		print(node1);
+	}
+
+	private static void removeLastNode(Node node) {
+		
+		if (node.getNext().getNext() == null) {
+			node.setNext(null);
+			return;
+		}
+		
+		removeLastNode(node.getNext());
 	}
 
 	private static boolean hasLoop(Node node) {
