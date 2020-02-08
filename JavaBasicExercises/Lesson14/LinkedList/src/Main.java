@@ -62,6 +62,12 @@ public class Main {
 		removeLastNode(node3);
 		System.out.println("\nLinked list after:\n------------------");
 		print(node1);
+		
+		// Print value of previous node
+		printHeaders("Get value of previous node");
+		node2.setPrevious(node1);
+		System.out.println("Value of node1: " + node1.getValue());
+		System.out.println("Value of node2's previous node (also node1): " + node2.getPrevious().getValue());
 	}
 
 	private static void removeLastNode(Node node) {
