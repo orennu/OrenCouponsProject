@@ -4,7 +4,7 @@ import java.util.Random;
 public class Matrixes {
 
 	private int[][] checkAscending = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9} };
-	private int[][] checkFirstCellNotAscending = {{9, 2}, {4, 5},	{7, 8}};
+	private int[][] checkFirstCellNotAscending = {{9, 2}, {4, 5}, {7, 8}};
 	private int[][] checkLastColFirstRowNotAscending = {{1, 2, 3, 0}, {4, 5, 6, 7}, {8, 9, 10, 11}};
 	private int[][] checkLastColSecondRowNotAscending = {{1, 2, 3, 4, 5}, {1, 7, 8, 9, 10}};
 	private int[][] checkSecondRowNotAscending = {{1, 2, 3, 4}, {5, 0, 7, 8}, {9, 10, 11, 12}};
@@ -19,8 +19,11 @@ public class Matrixes {
 			{75, 28, 99, 48, 53}};
 	public int[][] checkMatricesMultiplyFPFirstMatrix = {{1, 2}, {3, 4}};
 	public int[][] checkMatricesMultiplyFPSecondMatrix = {{1, 1, 1}, {1, 1, 1}, {1, 1, 1}};
+	public int[][] checkMatrixSymmetricPrimaryDiagonal = {{1, 12, 78, -67},	{12, 2, 100, 0}, 
+			{78, 100, 3, -555}, {-67, 0, -555, 4}};
+	public int[][] checkMatrixSymmetricSecondaryDiagonal = {{5, 12, 66, 1}, {19, 33, 2, 66}, 
+			{0, 3, 33, 12}, {4, 0, 19, 5}};
 	
-
 
 	public void randomSquareMatrix(int size) {
 
@@ -58,6 +61,30 @@ public class Matrixes {
 		return true;
 	}
 	
+	public boolean isMatrixAscendingRecursion(int[][] matrix, int row, int col) {
+		
+		
+		if (row == 0 && col == 0) {
+			return true;
+		}		
+		
+		if (matrix[row][col] < matrix[row][col - 1]) {
+			return false;
+		}
+		
+		col = col - 1;
+		
+		if (col == 0 && row != 0) {
+			if (matrix[row][col] < matrix[row - 1][matrix[0].length - 1]) {
+				return false;
+			}
+			row = row - 1;
+			col = matrix[0].length - 1;
+		}
+		
+		return isMatrixAscendingRecursion(matrix, row, col);
+	}
+	
 	public void checkRowSum(int[][] matrix, int num) {
 		
 		for (int row = 0; row < matrix.length; row++) {
@@ -92,16 +119,28 @@ public class Matrixes {
 		System.out.println("no columns with sum " + num + " found");
 	}
 
-	public boolean isMatrixSymetricPrimaryDiagonal(int[][] matrix) {
+	public boolean isMatrixSymmetricPrimaryDiagonal(int[][] matrix) {
 
-		// code goes here
+		for (int row = 0; row < matrix.length; row++) {
+			for (int col = row + 1; col < matrix[0].length; col++) {
+				if (matrix[row][col] != matrix[col][row]) {
+					return false;
+				}
+			}
+		}
 
 		return true;
 	}
 
 	public boolean isMatrixSymetricSecondaryDiagonal(int[][] matrix) {
 
-		// code goes here
+		for (int row = 0; row < matrix.length; row++) {
+			for (int col = 0; col < matrix[0].length - 1 - row; col++) {
+				if (matrix[row][col] != matrix[matrix.length - 1 - col][matrix[0].length - 1 - row]) {
+					return false;
+				}
+			}
+		}
 
 		return true;
 	}
