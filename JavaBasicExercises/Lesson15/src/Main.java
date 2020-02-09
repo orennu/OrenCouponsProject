@@ -19,17 +19,17 @@ public class Main {
 		System.out.println("Digits sum of " + userNum + ": " + calcNumberDigitsSum(userNum));
 
 		// Print if digit in num
-		System.out.println(isDigitInNumber(userNum, digit));
+		System.out.println(digit + " is in " + userNum + ": " + isDigitInNumber(userNum, digit));
 
 		Node node3 = new Node(2);
 		Node node2 = new Node(3, node3);
 		Node node1 = new Node(1, node2);
 
 		// Print if value in linked list
-		System.out.println(isValueInLinkedList(node1, userNum));
+		System.out.println(userNum + " is in linked list: " + isValueInLinkedList(node1, userNum));
 
 		// Print if value is last in linked list
-		System.out.println(isValueLastInLinkedList(node1, userNum));
+		System.out.println(userNum + " is last in linked list: " + isValueLastInLinkedList(node1, userNum));
 	}
 
 	private static boolean isValueLastInLinkedList(Node node, int num) {
