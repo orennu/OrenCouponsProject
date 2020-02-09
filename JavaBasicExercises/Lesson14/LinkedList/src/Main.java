@@ -17,16 +17,6 @@ public class Main {
 		node3.setNext(node4);
 		node4.setNext(node5);
 		
-		/*
-		 * uncomment to test isCyclic
-		 * node5.setNext(node1);
-		*/
-		
-		/*
-		 *  uncomment to test hasLoop
-		 *  node5.setNext(node3);
-		 */
-		
 		// Print values of linked list nodes in order (from head to tail)
 		printHeaders("Executing print");
 		print(node1);
@@ -47,14 +37,6 @@ public class Main {
 		printHeaders("Executing minValue");
 		System.out.println(minValue(node1));
 		
-		// Print if linked list is cyclic
-		printHeaders("Executing isCyclic");
-		System.out.println(isCyclic(node1));
-		
-		// Print if linked list has loop
-		printHeaders("Executing hasLoop");
-		System.out.println(hasLoop(node1));
-		
 		// Print remove last item from linked list
 		printHeaders("Executing removeLastNode");
 		System.out.println("Linked list before:\n-------------------");
@@ -68,6 +50,16 @@ public class Main {
 		node2.setPrevious(node1);
 		System.out.println("Value of node1: " + node1.getValue());
 		System.out.println("Value of node2's previous node (also node1): " + node2.getPrevious().getValue());
+		
+		// Print if linked list is cyclic
+		node4.setNext(node1); // setting this because node 5 was removed on removeLastNode
+		printHeaders("Executing isCyclic");
+		System.out.println(isCyclic(node1));
+		
+		// Print if linked list has loop
+		node4.setNext(node2);
+		printHeaders("Executing hasLoop");
+		System.out.println(hasLoop(node1));
 	}
 
 	private static void removeLastNode(Node node) {
@@ -86,6 +78,10 @@ public class Main {
 		Node fast = node;
 		
 		while(slow != null && fast != null && fast.getNext() != null) {
+			if (slow == fast) {
+				return true;
+			}
+			
 			slow = slow.getNext();
 			fast = fast.getNext().getNext();
 			if (slow == fast) {
