@@ -1,3 +1,6 @@
+/*
+ * Stack implementation using LinkedList
+ */
 
 public class Stack {
 	

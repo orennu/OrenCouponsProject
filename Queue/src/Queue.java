@@ -1,3 +1,6 @@
+/*
+ * Queue implementation using LinkedList
+ */
 
 public class Queue {
 	
