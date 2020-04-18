@@ -3,14 +3,14 @@ import com.orenn.coupons.enums.UserType;
 
 public class User {
 	
-	private long id;
+	private long userId;
 	private String userName;
 	private String password;
 	private long companyId;
 	private UserType type;
 	
-	public User(long id, String userName, String password, Long companyId, UserType type) {
-		this.id = id;
+	public User(long userId, String userName, String password, Long companyId, UserType type) {
+		this.userId = userId;
 		this.userName = userName;
 		this.password = password;
 		this.companyId = companyId;
@@ -27,12 +27,12 @@ public class User {
 	public User() {
 	}
 
-	public long getId() {
-		return id;
+	public long getUserId() {
+		return userId;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setUserId(long userId) {
+		this.userId = userId;
 	}
 
 	public String getUserName() {
@@ -65,6 +65,12 @@ public class User {
 
 	public void setType(UserType type) {
 		this.type = type;
+	}
+
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", userName=" + userName + ", password=" + password + ", companyId="
+				+ companyId + ", type=" + type + "]";
 	}
 	
 }

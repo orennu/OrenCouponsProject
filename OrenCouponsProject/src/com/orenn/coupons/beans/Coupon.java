@@ -1,55 +1,65 @@
 package com.orenn.coupons.beans;
-import java.util.Date;
+import java.net.URL;
+import java.time.LocalDateTime;
 import com.orenn.coupons.enums.CouponCategory;
 
 public class Coupon {
 	
-	private long id;
-	private String name;
+	private long couponId;
+	private String couponName;
 	private String description;
 	private long companyId;
 	private float price;
 	private CouponCategory category;
-	private Date expirationDate;
+	private URL couponImage;
+	private int quantity;
+	private LocalDateTime startDate;
+	private LocalDateTime expirationDate;
 	
-	public Coupon(long id, String name, String description, long companyId, float price, CouponCategory category,
-			Date expirationDate) {
-		this.id = id;
-		this.name = name;
+	public Coupon(long couponId, String couponName, String description, long companyId, float price,
+			CouponCategory category, URL couponImage, int quantity, LocalDateTime startDate, LocalDateTime expirationDate) {
+		this.couponId = couponId;
+		this.couponName = couponName;
 		this.description = description;
 		this.companyId = companyId;
 		this.price = price;
 		this.category = category;
+		this.couponImage = couponImage;
+		this.quantity = quantity;
+		this.startDate = startDate;
 		this.expirationDate = expirationDate;
 	}
 
-	public Coupon(String name, String description, long companyId, float price, CouponCategory category,
-			Date expirationDate) {
-		this.name = name;
+	public Coupon(String couponName, String description, long companyId, float price, CouponCategory category,
+			URL couponImage, int quantity, LocalDateTime startDate, LocalDateTime expirationDate) {
+		this.couponName = couponName;
 		this.description = description;
 		this.companyId = companyId;
 		this.price = price;
 		this.category = category;
+		this.couponImage = couponImage;
+		this.quantity = quantity;
+		this.startDate = startDate;
 		this.expirationDate = expirationDate;
 	}
 
 	public Coupon() {
 	}
 
-	public long getId() {
-		return id;
+	public long getCouponId() {
+		return couponId;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setCouponId(long couponId) {
+		this.couponId = couponId;
 	}
 
-	public String getName() {
-		return name;
+	public String getCouponName() {
+		return couponName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setCouponName(String couponName) {
+		this.couponName = couponName;
 	}
 
 	public String getDescription() {
@@ -83,13 +93,45 @@ public class Coupon {
 	public void setCategory(CouponCategory category) {
 		this.category = category;
 	}
+	
+	public URL getCouponImage() {
+		return couponImage;
+	}
 
-	public Date getExpirationDate() {
+	public void setCouponImage(URL couponImage) {
+		this.couponImage = couponImage;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+	
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public LocalDateTime getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(LocalDateTime startDate) {
+		this.startDate = startDate;
+	}
+	
+	public LocalDateTime getExpirationDate() {
 		return expirationDate;
 	}
 
-	public void setExpirationDate(Date expirationDate) {
+	public void setExpirationDate(LocalDateTime expirationDate) {
 		this.expirationDate = expirationDate;
+	}
+
+	@Override
+	public String toString() {
+		return "Coupon [couponId=" + couponId + ", couponName=" + couponName + ", description=" + description
+				+ ", companyId=" + companyId + ", price=" + price + ", category=" + category + ", couponImage="
+				+ couponImage + ", quantity=" + quantity	+ ", startDate=" + startDate + ", expirationDate="
+				+ expirationDate + "]";
 	}
 	
 }

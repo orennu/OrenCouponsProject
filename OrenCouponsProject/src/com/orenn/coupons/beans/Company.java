@@ -3,22 +3,22 @@ import com.orenn.coupons.enums.IndustryType;
 
 public class Company {
 	
-	private long id;
-	private String name;
+	private long companyId;
+	private String companyName;
 	private String phoneNumber;
 	private String address;
 	private IndustryType industry;
 	
-	public Company(long id, String name, String phoneNumber, String address, IndustryType industry) {
-		this.id = id;
-		this.name = name;
+	public Company(long companyId, String companyName, String phoneNumber, String address, IndustryType industry) {
+		this.companyId = companyId;
+		this.companyName = companyName;
 		this.phoneNumber = phoneNumber;
 		this.address = address;
 		this.industry = industry;
 	}
 	
 	public Company(String name, String phoneNumber, String address, IndustryType industry) {
-		this.name = name;
+		this.companyName = name;
 		this.phoneNumber = phoneNumber;
 		this.address = address;
 		this.industry = industry;
@@ -27,20 +27,20 @@ public class Company {
 	public Company() {
 	}
 
-	public long getId() {
-		return id;
+	public long getCompanyId() {
+		return companyId;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setCompanyId(long companyId) {
+		this.companyId = companyId;
 	}
 
-	public String getName() {
-		return name;
+	public String getCompanyName() {
+		return companyName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
 	}
 
 	public String getPhoneNumber() {
@@ -65,6 +65,12 @@ public class Company {
 
 	public void setIndustry(IndustryType industry) {
 		this.industry = industry;
+	}
+
+	@Override
+	public String toString() {
+		return "Company [companyId=" + companyId + ", companyName=" + companyName + ", phoneNumber=" + phoneNumber
+				+ ", address=" + address + ", industry=" + industry + "]";
 	}
 	
 }

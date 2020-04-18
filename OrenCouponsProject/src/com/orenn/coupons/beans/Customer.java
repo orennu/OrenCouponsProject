@@ -3,7 +3,7 @@ import java.util.Date;
 
 public class Customer {
 	
-	private long id;
+	private long customerId;
 	private String firstName;
 	private String lastName;
 	private String fullName;
@@ -11,8 +11,8 @@ public class Customer {
 	private String phoneNumber;
 	private Date dateOfBirth;
 	
-	public Customer(long id, String firstName, String lastName, String address, String phoneNumber, Date dateOfBirth) {
-		this.id = id;
+	public Customer(long customerId, String firstName, String lastName, String address, String phoneNumber, Date dateOfBirth) {
+		this.customerId = customerId;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.fullName = firstName + " " + lastName;
@@ -33,12 +33,12 @@ public class Customer {
 	public Customer() {
 	}
 
-	public long getId() {
-		return id;
+	public long getCustomerId() {
+		return customerId;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setCustomerId(long customerId) {
+		this.customerId = customerId;
 	}
 
 	public String getFirstName() {
@@ -87,6 +87,13 @@ public class Customer {
 
 	public void setDateOfBirth(Date dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
+	}
+
+	@Override
+	public String toString() {
+		return "Customer [customerId=" + customerId + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", fullName=" + fullName + ", address=" + address + ", phoneNumber=" + phoneNumber + ", dateOfBirth="
+				+ dateOfBirth + "]";
 	}
 	
 }
