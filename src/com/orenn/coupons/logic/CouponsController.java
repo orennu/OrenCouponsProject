@@ -1,6 +1,6 @@
 package com.orenn.coupons.logic;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import com.orenn.coupons.beans.Coupon;
 import com.orenn.coupons.dao.CouponsDao;
@@ -62,7 +62,7 @@ public class CouponsController {
 			throw new ApplicationException("invalid coupon description length, must be between 2-30");
 		}
 		if (!isValidCouponNameOrDescription(coupon.getDescription())) {
-			throw new ApplicationException("invalid coupon description, cannot be empty");
+			throw new ApplicationException();
 		}
 		if (!this.companiesController.isCompanyExists(coupon.getCompanyId())) {
 			throw new ApplicationException();
@@ -76,26 +76,26 @@ public class CouponsController {
 		if (coupon.getQuantity() <= 0) {
 			throw new ApplicationException("invalid coupon quantity, must be greater than 0");
 		}
-		if (coupon.getStartDate().isBefore(LocalDateTime.now())) {
-			throw new ApplicationException("coupon start date and time cannot be in the past");
+		if (coupon.getStartDate().isBefore(LocalDate.now())) {
+			throw new ApplicationException("coupon start date cannot be in the past");
 		}
-		if (coupon.getExpirationDate().isBefore(LocalDateTime.now())) {
-			throw new ApplicationException("coupon expiration date and time cannot be in the past");
+		if (coupon.getExpirationDate().isBefore(LocalDate.now())) {
+			throw new ApplicationException("coupon expiration date cannot be in the past");
 		}
 		if (coupon.getStartDate().isAfter(coupon.getExpirationDate())) {
-			throw new ApplicationException("coupon start date and time cannot be after expiration date and time");
+			throw new ApplicationException("coupon start date cannot be after expiration date");
 		}
 		
 		return true;
 		
 	}
 
-	private boolean isValidCouponNameOrDescription(String couponName) {
+	private boolean isValidCouponNameOrDescription(String couponName) throws ApplicationException {
 		if (couponName.trim().length() > 0) {
 			return true;
 		}
 		
-		return false;
+		throw new ApplicationException("invalid coupon description, cannot be empty");
 	}
-
+	
 }

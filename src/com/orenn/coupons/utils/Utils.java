@@ -33,7 +33,12 @@ public class Utils {
 		if (str.length() >= min && str.length() <= max) {
 			return true;
 		}
+		
 		return false;
+	}
+	
+	public static String capitalize(String str) {
+		return str.substring(0, 1).toUpperCase() + str.substring(1).toLowerCase();
 	}
 
 }

@@ -1,6 +1,6 @@
 package com.orenn.coupons.dao;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import com.orenn.coupons.beans.Coupon;
 
@@ -18,8 +18,8 @@ public class CouponsDao {
 		System.out.println("coupon removed");
 	}
 
-	public boolean isCouponExists(String couponName, long companyId, LocalDateTime startDate,
-			LocalDateTime expirationDate) {
+	public boolean isCouponExists(String couponName, long companyId, LocalDate startDate,
+			LocalDate expirationDate) {
 		return false;
 	}
 	

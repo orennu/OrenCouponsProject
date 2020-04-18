@@ -1,5 +1,7 @@
 package com.orenn.coupons.beans;
-import java.util.Date;
+import java.time.LocalDate;
+
+import com.orenn.coupons.utils.Utils;
 
 public class Customer {
 	
@@ -9,22 +11,22 @@ public class Customer {
 	private String fullName;
 	private String address;
 	private String phoneNumber;
-	private Date dateOfBirth;
+	private LocalDate dateOfBirth;
 	
-	public Customer(long customerId, String firstName, String lastName, String address, String phoneNumber, Date dateOfBirth) {
+	public Customer(long customerId, String firstName, String lastName, String address, String phoneNumber, LocalDate dateOfBirth) {
 		this.customerId = customerId;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.fullName = firstName + " " + lastName;
+		this.firstName = Utils.capitalize(firstName.trim());
+		this.lastName = Utils.capitalize(lastName.trim());
+		this.fullName = this.firstName + " " + this.lastName;
 		this.address = address;
 		this.phoneNumber = phoneNumber;
 		this.dateOfBirth = dateOfBirth;
 	}
 
-	public Customer(String firstName, String lastName, String address, String phoneNumber, Date dateOfBirth) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.fullName = firstName + " " + lastName;
+	public Customer(String firstName, String lastName, String address, String phoneNumber, LocalDate dateOfBirth) {
+		this.firstName = Utils.capitalize(firstName.trim());
+		this.lastName = Utils.capitalize(lastName.trim());
+		this.fullName = this.firstName + " " + this.lastName;
 		this.address = address;
 		this.phoneNumber = phoneNumber;
 		this.dateOfBirth = dateOfBirth;
@@ -81,11 +83,11 @@ public class Customer {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public Date getDateOfBirth() {
+	public LocalDate getDateOfBirth() {
 		return dateOfBirth;
 	}
 
-	public void setDateOfBirth(Date dateOfBirth) {
+	public void setDateOfBirth(LocalDate dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 

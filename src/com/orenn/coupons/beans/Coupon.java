@@ -1,6 +1,6 @@
 package com.orenn.coupons.beans;
 import java.net.URL;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import com.orenn.coupons.enums.CouponCategory;
 
 public class Coupon {
@@ -13,11 +13,11 @@ public class Coupon {
 	private CouponCategory category;
 	private URL couponImage;
 	private int quantity;
-	private LocalDateTime startDate;
-	private LocalDateTime expirationDate;
+	private LocalDate startDate;
+	private LocalDate expirationDate;
 	
 	public Coupon(long couponId, String couponName, String description, long companyId, float price,
-			CouponCategory category, URL couponImage, int quantity, LocalDateTime startDate, LocalDateTime expirationDate) {
+			CouponCategory category, URL couponImage, int quantity, LocalDate startDate, LocalDate expirationDate) {
 		this.couponId = couponId;
 		this.couponName = couponName;
 		this.description = description;
@@ -31,7 +31,7 @@ public class Coupon {
 	}
 
 	public Coupon(String couponName, String description, long companyId, float price, CouponCategory category,
-			URL couponImage, int quantity, LocalDateTime startDate, LocalDateTime expirationDate) {
+			URL couponImage, int quantity, LocalDate startDate, LocalDate expirationDate) {
 		this.couponName = couponName;
 		this.description = description;
 		this.companyId = companyId;
@@ -110,19 +110,19 @@ public class Coupon {
 		this.quantity = quantity;
 	}
 
-	public LocalDateTime getStartDate() {
+	public LocalDate getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(LocalDateTime startDate) {
+	public void setStartDate(LocalDate startDate) {
 		this.startDate = startDate;
 	}
 	
-	public LocalDateTime getExpirationDate() {
+	public LocalDate getExpirationDate() {
 		return expirationDate;
 	}
 
-	public void setExpirationDate(LocalDateTime expirationDate) {
+	public void setExpirationDate(LocalDate expirationDate) {
 		this.expirationDate = expirationDate;
 	}
 
