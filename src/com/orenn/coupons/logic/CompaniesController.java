@@ -1,6 +1,7 @@
 package com.orenn.coupons.logic;
 
 import com.orenn.coupons.utils.Utils;
+
 import com.orenn.coupons.beans.Company;
 import com.orenn.coupons.dao.CompaniesDao;
 import com.orenn.coupons.exceptions.ApplicationException;
@@ -20,6 +21,8 @@ public class CompaniesController {
 		if (this.companiesDao.isCompanyExists(company.getCompanyName())) {
 			throw new ApplicationException("company " + company.getCompanyName() + " already exists");
 		}
+		
+		company.setCompanyName(Utils.capitalize(company.getCompanyName()));
 		
 		this.companiesDao.addCompany(company);
 	}
@@ -58,7 +61,7 @@ public class CompaniesController {
 		if (!Utils.isValidLength(company.getCompanyName(), 2, 20)) {
 			throw new ApplicationException("invalid company name length, must be between 2-20");
 		}
-		if (!isValidCompanyName(company.getCompanyName())) {
+		if (!isCompanyNameValid(company.getCompanyName())) {
 			throw new ApplicationException("invalid company name, can contain only letters, digits and white space");
 		}
 		if (!Utils.isValidPhoneNumber(company.getPhoneNumber())) {
@@ -70,12 +73,18 @@ public class CompaniesController {
 		
 		return true;
 	}
-	private boolean isValidCompanyName(String companyName) {
-		if (companyName.matches("[a-zA-Z0-9]+") && companyName.trim().length() > 0) {
-			return true;
+	private boolean isCompanyNameValid(String companyName) throws ApplicationException {
+		String nameRegex = "[a-zA-Z0-9 ]+";
+		
+		if (!Utils.isMatchingPattern(nameRegex, companyName)) {
+			throw new ApplicationException("invalid name, must contain only valid name characters");
 		}
 		
-		return false;
+		if (companyName.trim().length() < companyName.length()) {
+			throw new ApplicationException("invalid name, cannot begin or end with whitespaces");
+		}
+		
+		return true;
 	}
 	
 }

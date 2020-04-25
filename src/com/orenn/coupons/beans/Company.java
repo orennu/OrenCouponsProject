@@ -1,6 +1,5 @@
 package com.orenn.coupons.beans;
 import com.orenn.coupons.enums.IndustryType;
-import com.orenn.coupons.utils.Utils;
 
 public class Company {
 	
@@ -12,14 +11,14 @@ public class Company {
 	
 	public Company(long companyId, String companyName, String phoneNumber, String address, IndustryType industry) {
 		this.companyId = companyId;
-		this.companyName = Utils.capitalize(companyName.trim());
+		this.companyName = companyName;
 		this.phoneNumber = phoneNumber;
 		this.address = address;
 		this.industry = industry;
 	}
 	
 	public Company(String companyName, String phoneNumber, String address, IndustryType industry) {
-		this.companyName = Utils.capitalize(companyName.trim());
+		this.companyName = companyName;
 		this.phoneNumber = phoneNumber;
 		this.address = address;
 		this.industry = industry;

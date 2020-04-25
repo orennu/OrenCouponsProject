@@ -1,8 +1,6 @@
 package com.orenn.coupons.logic;
 
 import java.time.LocalDate;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import com.orenn.coupons.beans.Customer;
 import com.orenn.coupons.dao.CustomersDao;
@@ -25,6 +23,9 @@ public class CustomersController {
 			throw new ApplicationException("customer already exists");
 		}
 		
+		customer.setFirstName(Utils.capitalize(customer.getFirstName()));
+		customer.setLastName(Utils.capitalize(customer.getLastName()));
+		
 		this.customersDao.addCustomer(customer);
 	}
 
@@ -35,6 +36,9 @@ public class CustomersController {
 		if (!this.customersDao.isCustomerExists(customer.getCustomerId())) {
 			throw new ApplicationException("customer does not exists");
 		}
+		
+		customer.setFirstName(Utils.capitalize(customer.getFirstName()));
+		customer.setLastName(Utils.capitalize(customer.getLastName()));
 		
 		this.customersDao.updateCustomer(customer);
 	}
@@ -74,15 +78,12 @@ public class CustomersController {
 	}
 
 	private boolean isValidName(String name) throws ApplicationException {
-		String nameRegex = "^[\\p{L} .'-]+$";
-		Pattern namePattern = Pattern.compile(nameRegex);
-		Matcher matcher = namePattern.matcher(name);
-		
-		if (!matcher.matches()) {
+		String nameRegex = "^[\\p{L}.'-]+$";
+		if (!Utils.isMatchingPattern(nameRegex, name)) {
 			throw new ApplicationException("invalid name, must contain only valid name characters");
 		}
-		if (!(name.trim().length() > 0)) {
-			throw new ApplicationException("invalid name, cannot contain only whitespaces");
+		if (name.trim().length() < name.length()) {
+			throw new ApplicationException("invalid name, cannot begin or end with whitespaces");
 		}
 		
 		return true;

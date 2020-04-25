@@ -15,18 +15,16 @@ public class Customer {
 	
 	public Customer(long customerId, String firstName, String lastName, String address, String phoneNumber, LocalDate dateOfBirth) {
 		this.customerId = customerId;
-		this.firstName = Utils.capitalize(firstName.trim());
-		this.lastName = Utils.capitalize(lastName.trim());
-		this.fullName = this.firstName + " " + this.lastName;
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.address = address;
 		this.phoneNumber = phoneNumber;
 		this.dateOfBirth = dateOfBirth;
 	}
 
 	public Customer(String firstName, String lastName, String address, String phoneNumber, LocalDate dateOfBirth) {
-		this.firstName = Utils.capitalize(firstName.trim());
-		this.lastName = Utils.capitalize(lastName.trim());
-		this.fullName = this.firstName + " " + this.lastName;
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.address = address;
 		this.phoneNumber = phoneNumber;
 		this.dateOfBirth = dateOfBirth;
@@ -60,11 +58,11 @@ public class Customer {
 	}
 
 	public String getFullName() {
-		return fullName;
+		return firstName + " " + lastName;
 	}
 
 	public void setFullName(String fullName) {
-		this.fullName = fullName;
+		this.fullName = this.firstName + " " + this.lastName;
 	}
 
 	public String getAddress() {
