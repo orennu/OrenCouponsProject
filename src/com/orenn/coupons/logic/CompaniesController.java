@@ -14,7 +14,7 @@ public class CompaniesController {
 		this.companiesDao = new CompaniesDao();
 	}
 	
-	public void addCompany(Company company) throws ApplicationException {
+	public long addCompany(Company company) throws ApplicationException {
 		if (!isCompanyAttributesValid(company)) {
 			throw new ApplicationException();
 		}
@@ -24,7 +24,7 @@ public class CompaniesController {
 		
 		company.setCompanyName(Utils.capitalize(company.getCompanyName()));
 		
-		this.companiesDao.addCompany(company);
+		return this.companiesDao.addCompany(company);
 	}
 	
 	public boolean isCompanyExists(long companyId) throws ApplicationException {

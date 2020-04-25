@@ -4,8 +4,9 @@ import com.orenn.coupons.beans.Company;
 
 public class CompaniesDao {
 	
-	public void addCompany(Company company) {
+	public long addCompany(Company company) {
 		System.out.println("company " + company.getCompanyName() + " added");
+		return 1;
 	}
 	
 	public void updateCompany(Company company) {

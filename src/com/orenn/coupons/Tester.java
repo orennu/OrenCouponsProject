@@ -15,8 +15,8 @@ public class Tester {
 	
 	public static void main(String[] args) {
 		LocalDate bday = LocalDate.of(1980, 4, 9);
-		Company company = new Company();
-//		Company company = new Company(null, "+9724714514", "afafa", IndustryType.FOOD);
+//		Company company = new Company();
+		Company company = new Company("the company", "+9724714514", "afafa", IndustryType.FOOD);
 		CompaniesController cont = new CompaniesController();
 //		
 		try {
