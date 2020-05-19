@@ -1,43 +1,44 @@
 package com.orenn.coupons.beans;
-import java.net.URL;
-import java.time.LocalDate;
+import java.util.Date;
+
 import com.orenn.coupons.enums.CouponCategory;
 
 public class Coupon {
 	
-	private long couponId;
-	private String couponName;
+	private long id;
+	private String title;
 	private String description;
 	private long companyId;
 	private float price;
 	private CouponCategory category;
-	private URL couponImage;
+	private String image;
 	private int quantity;
-	private LocalDate startDate;
-	private LocalDate expirationDate;
+	private Date startDate;
+	private Date expirationDate;
 	
-	public Coupon(long couponId, String couponName, String description, long companyId, float price,
-			CouponCategory category, URL couponImage, int quantity, LocalDate startDate, LocalDate expirationDate) {
-		this.couponId = couponId;
-		this.couponName = couponName;
+	public Coupon(long id, String title, String description, long companyId, float price,
+			CouponCategory category, String image, int quantity, Date startDate, 
+			Date expirationDate) {
+		this.id = id;
+		this.title = title;
 		this.description = description;
 		this.companyId = companyId;
 		this.price = price;
 		this.category = category;
-		this.couponImage = couponImage;
+		this.image = image;
 		this.quantity = quantity;
 		this.startDate = startDate;
 		this.expirationDate = expirationDate;
 	}
 
-	public Coupon(String couponName, String description, long companyId, float price, CouponCategory category,
-			URL couponImage, int quantity, LocalDate startDate, LocalDate expirationDate) {
-		this.couponName = couponName;
+	public Coupon(String title, String description, long companyId, float price, CouponCategory category,
+			String image, int quantity, Date startDate, Date expirationDate) {
+		this.title = title;
 		this.description = description;
 		this.companyId = companyId;
 		this.price = price;
 		this.category = category;
-		this.couponImage = couponImage;
+		this.image = image;
 		this.quantity = quantity;
 		this.startDate = startDate;
 		this.expirationDate = expirationDate;
@@ -46,20 +47,20 @@ public class Coupon {
 	public Coupon() {
 	}
 
-	public long getCouponId() {
-		return couponId;
+	public long getId() {
+		return id;
 	}
 
-	public void setCouponId(long couponId) {
-		this.couponId = couponId;
+	public void setId(long id) {
+		this.id = id;
 	}
 
-	public String getCouponName() {
-		return couponName;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setCouponName(String couponName) {
-		this.couponName = couponName;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public String getDescription() {
@@ -94,12 +95,12 @@ public class Coupon {
 		this.category = category;
 	}
 	
-	public URL getCouponImage() {
-		return couponImage;
+	public String getImage() {
+		return image;
 	}
 
-	public void setCouponImage(URL couponImage) {
-		this.couponImage = couponImage;
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 	public int getQuantity() {
@@ -110,28 +111,28 @@ public class Coupon {
 		this.quantity = quantity;
 	}
 
-	public LocalDate getStartDate() {
+	public Date getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(LocalDate startDate) {
+	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
 	
-	public LocalDate getExpirationDate() {
+	public Date getExpirationDate() {
 		return expirationDate;
 	}
 
-	public void setExpirationDate(LocalDate expirationDate) {
+	public void setExpirationDate(Date expirationDate) {
 		this.expirationDate = expirationDate;
 	}
 
 	@Override
 	public String toString() {
-		return "Coupon [couponId=" + couponId + ", couponName=" + couponName + ", description=" + description
-				+ ", companyId=" + companyId + ", price=" + price + ", category=" + category + ", couponImage="
-				+ couponImage + ", quantity=" + quantity	+ ", startDate=" + startDate + ", expirationDate="
-				+ expirationDate + "]";
+		return "Coupon [id=" + id + ", title=" + title + ", description=" + description
+				+ ", companyId=" + companyId + ", price=" + price + ", category=" + category + ", image="
+				+ image + ", quantity=" + quantity	+ ", startDate=" + startDate
+				+ ", expirationDate="	+ expirationDate + "]";
 	}
 	
 }

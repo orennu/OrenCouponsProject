@@ -3,36 +3,42 @@ import com.orenn.coupons.enums.UserType;
 
 public class User {
 	
-	private long userId;
+	private long id;
 	private String userName;
 	private String password;
-	private long companyId;
+	private String email;
+	private Long companyId;
 	private UserType type;
+	private boolean lockUser;
 	
-	public User(long userId, String userName, String password, Long companyId, UserType type) {
-		this.userId = userId;
+	public User(long id, String userName, String password, String email, Long companyId, UserType type) {
+		this.id = id;
 		this.userName = userName;
 		this.password = password;
+		this.email = email;
 		this.companyId = companyId;
 		this.type = type;
+		this.lockUser = false;
 	}
 
-	public User(String userName, String password, Long companyId, UserType type) {
+	public User(String userName, String password, String email, Long companyId, UserType type) {
 		this.userName = userName;
 		this.password = password;
+		this.email = email;
 		this.companyId = companyId;
 		this.type = type;
+		this.lockUser = false;
 	}
 	
 	public User() {
 	}
 
-	public long getUserId() {
-		return userId;
+	public long getId() {
+		return id;
 	}
 
-	public void setUserId(long userId) {
-		this.userId = userId;
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getUserName() {
@@ -51,11 +57,19 @@ public class User {
 		this.password = password;
 	}
 
-	public long getCompanyId() {
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Long getCompanyId() {
 		return companyId;
 	}
 
-	public void setCompanyId(long companyId) {
+	public void setCompanyId(Long companyId) {
 		this.companyId = companyId;
 	}
 
@@ -67,10 +81,18 @@ public class User {
 		this.type = type;
 	}
 
+	public boolean isLockUser() {
+		return lockUser;
+	}
+
+	public void setLockUser(boolean lockUser) {
+		this.lockUser = lockUser;
+	}
+
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", userName=" + userName + ", password=" + password + ", companyId="
-				+ companyId + ", type=" + type + "]";
+		return "User [id=" + id + ", userName=" + userName + ", password=" + password + ", email=" + email
+				+ ", companyId=" + companyId + ", type=" + type + ", lockUser=" + lockUser + "]";
 	}
-	
+
 }

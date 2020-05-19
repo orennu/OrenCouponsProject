@@ -6,6 +6,7 @@ public enum CouponCategory {
 	TEXSTILE("Texstile"),
 	TOURISM("Tourism"),
 	ELECTRONICS("Electronics"),
+	ENTERTAINMENT("Entertainment"),
 	JEWLERY("Jewlery");
 	
 	private String name;

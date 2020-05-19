@@ -1,16 +1,17 @@
 package com.orenn.coupons.beans;
+
 import java.util.Date;
 
 public class Purchase {
 	
-	private long purchaseId;
+	private long id;
 	private long customerId;
 	private long couponId;
 	private int quantity;
 	private Date purchaseDate;
 
-	public Purchase(long purchaseId, long customerId, long couponId, int quantity, Date purchaseDate) {
-		this.purchaseId = purchaseId;
+	public Purchase(long id, long customerId, long couponId, int quantity, Date purchaseDate) {
+		this.id = id;
 		this.customerId = customerId;
 		this.couponId = couponId;
 		this.quantity = quantity;
@@ -27,12 +28,12 @@ public class Purchase {
 	public Purchase() {
 	}
 	
-	public long getPurchaseId() {
-		return purchaseId;
+	public long getId() {
+		return id;
 	}
 	
-	public void setPurchaseId(long purchaseId) {
-		this.purchaseId = purchaseId;
+	public void setId(long id) {
+		this.id = id;
 	}
 	
 	public long getCustomerId() {
@@ -69,7 +70,7 @@ public class Purchase {
 
 	@Override
 	public String toString() {
-		return "Purchase [purchaseId=" + purchaseId + ", customerId=" + customerId + ", couponId=" + couponId
+		return "Purchase [id=" + id + ", customerId=" + customerId + ", couponId=" + couponId
 				+ ", quantity=" + quantity + ", purchaseDate=" + purchaseDate + "]";
 	}
 	

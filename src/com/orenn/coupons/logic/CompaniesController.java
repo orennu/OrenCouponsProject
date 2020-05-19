@@ -1,9 +1,13 @@
 package com.orenn.coupons.logic;
 
-import com.orenn.coupons.utils.Utils;
+import com.orenn.coupons.utils.StringUtils;
+import com.orenn.coupons.utils.ValidationsUtils;
+
+import java.util.List;
 
 import com.orenn.coupons.beans.Company;
 import com.orenn.coupons.dao.CompaniesDao;
+import com.orenn.coupons.enums.ErrorType;
 import com.orenn.coupons.exceptions.ApplicationException;
 
 public class CompaniesController {
@@ -18,37 +22,56 @@ public class CompaniesController {
 		if (!isCompanyAttributesValid(company)) {
 			throw new ApplicationException();
 		}
-		if (this.companiesDao.isCompanyExists(company.getCompanyName())) {
-			throw new ApplicationException("company " + company.getCompanyName() + " already exists");
+		if (this.companiesDao.isCompanyExists(company.getName())) {
+			throw new ApplicationException(ErrorType.ALREADY_EXISTS_ERROR, 
+					String.format("Company %s %s", company.getName(), ErrorType.ALREADY_EXISTS_ERROR.getErrorDescription()));
 		}
 		
-		company.setCompanyName(Utils.capitalize(company.getCompanyName()));
+		company.setName(StringUtils.capitalize(company.getName()));
 		
 		return this.companiesDao.addCompany(company);
 	}
 	
 	public boolean isCompanyExists(long companyId) throws ApplicationException {
 		if (!this.companiesDao.isCompanyExists(companyId)) {
-			throw new ApplicationException("company id does not exist");
+			throw new ApplicationException(ErrorType.NOT_EXISTS_ERROR, 
+										String.format("Company id %s %s", companyId, ErrorType.NOT_EXISTS_ERROR.getErrorDescription()));
 		}
 		
 		return true;
 	}
 	
+	public Company getCompanyById(long companyId) throws ApplicationException {
+		if (!this.companiesDao.isCompanyExists(companyId)) {
+			throw new ApplicationException(ErrorType.NOT_EXISTS_ERROR, 
+										String.format("Company id %s %s", companyId, ErrorType.NOT_EXISTS_ERROR.getErrorDescription()));
+		}
+		
+		return this.companiesDao.getCompanyById(companyId);
+	}
+	
+	public List<Company> getAllCompanies() throws ApplicationException {
+		return this.companiesDao.getAllCompanies();
+	}
+	
 	public void updateCompany(Company company) throws ApplicationException {
+		if (!this.companiesDao.isCompanyExists(company.getId())) {
+			throw new ApplicationException(ErrorType.NOT_EXISTS_ERROR, 
+										String.format("Company id %s %s", company.getId(), ErrorType.NOT_EXISTS_ERROR.getErrorDescription()));
+		}
 		if (!isCompanyAttributesValid(company)) {
 			throw new ApplicationException();
 		}
-		if (!this.companiesDao.isCompanyExists(company.getCompanyId())) {
-			throw new ApplicationException("company does not exists");
-		}
+		
+		company.setName(StringUtils.capitalize(company.getName()));
 		
 		this.companiesDao.updateCompany(company);
 	}
 	
 	public void removeCompany(long companyId) throws ApplicationException {
 		if (!this.companiesDao.isCompanyExists(companyId)) {
-			throw new ApplicationException("company does not exists");
+			throw new ApplicationException(ErrorType.NOT_EXISTS_ERROR, 
+										String.format("Company id %s %s", companyId, ErrorType.NOT_EXISTS_ERROR.getErrorDescription()));
 		}
 		
 		this.companiesDao.removeCompany(companyId);
@@ -56,32 +79,29 @@ public class CompaniesController {
 	
 	private boolean isCompanyAttributesValid(Company company) throws ApplicationException {
 		if (company == null) {
-			throw new ApplicationException("company is null");
+			throw new ApplicationException(ErrorType.NULL_ERROR, String.format("%s company", ErrorType.NULL_ERROR.getErrorDescription()));
 		}
-		if (!Utils.isValidLength(company.getCompanyName(), 2, 20)) {
-			throw new ApplicationException("invalid company name length, must be between 2-20");
+		if (this.companiesDao.isCompanyEmailExists(company.getEmail())) {
+			throw new ApplicationException(ErrorType.ALREADY_EXISTS_ERROR, 
+										String.format("Company with email %s %s", company.getEmail(), ErrorType.ALREADY_EXISTS_ERROR.getErrorDescription()));
 		}
-		if (!isCompanyNameValid(company.getCompanyName())) {
-			throw new ApplicationException("invalid company name, can contain only letters, digits and white space");
+		if (!ValidationsUtils.isValidEmail(company.getEmail())) {
+			throw new ApplicationException(ErrorType.INVALID_FORMAT_ERROR, 
+										String.format("%s in email address", ErrorType.INVALID_FORMAT_ERROR.getErrorDescription()));
 		}
-		if (!Utils.isValidPhoneNumber(company.getPhoneNumber())) {
-			throw new ApplicationException("invalid phone number");
+		if (this.companiesDao.isCompanyPhoneNumberExists(company.getPhoneNumber())) {
+			throw new ApplicationException(ErrorType.ALREADY_EXISTS_ERROR, 
+										String.format("Company with phone number %s %s", company.getPhoneNumber(), ErrorType.ALREADY_EXISTS_ERROR.getErrorDescription()));
 		}
-		if (company.getAddress().length() == 0) {
-			throw new ApplicationException("address cannot be empty");
+		if (!ValidationsUtils.isCompanyNameValid(company.getName())) {
+			throw new ApplicationException();
 		}
-		
-		return true;
-	}
-	private boolean isCompanyNameValid(String companyName) throws ApplicationException {
-		String nameRegex = "[a-zA-Z0-9 ]+";
-		
-		if (!Utils.isMatchingPattern(nameRegex, companyName)) {
-			throw new ApplicationException("invalid name, must contain only valid name characters");
+		if (!ValidationsUtils.isValidPhoneNumber(company.getPhoneNumber())) {
+			throw new ApplicationException(ErrorType.INVALID_FORMAT_ERROR, 
+										String.format("%s, phone number must be 6 - 14 digits", ErrorType.INVALID_FORMAT_ERROR.getErrorDescription()));
 		}
-		
-		if (companyName.trim().length() < companyName.length()) {
-			throw new ApplicationException("invalid name, cannot begin or end with whitespaces");
+		if (!ValidationsUtils.isValidAddress(company.getAddress())) {
+			throw new ApplicationException(ErrorType.INVALID_CHARS_ERROR, String.format("%s in address", ErrorType.INVALID_CHARS_ERROR.getErrorDescription()));
 		}
 		
 		return true;

@@ -1,6 +1,15 @@
 package com.orenn.coupons.exceptions;
 
+import com.orenn.coupons.enums.ErrorType;
+
 public class ApplicationException extends Exception {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private ErrorType errorType;
+	
 	public ApplicationException() {
 	}
 	
@@ -8,12 +17,18 @@ public class ApplicationException extends Exception {
 		super(message);
 	}
 	
-	public ApplicationException(String message, Throwable cause) {
-		super(message, cause);
+	public ApplicationException(ErrorType errorType, String message) {
+		super(message);
+		this.errorType = errorType;
 	}
 	
-	public ApplicationException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-		super(message, cause, enableSuppression, writableStackTrace);
+	public ApplicationException(Exception e, ErrorType errorType, String message) {
+		super(message, e);
+		this.errorType = errorType;
+	}
+	
+	public ErrorType getErrorType() {
+		return errorType;
 	}
 
 }

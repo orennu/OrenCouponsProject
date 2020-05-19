@@ -2,7 +2,7 @@ package com.orenn.coupons.enums;
 
 public enum UserType {
 	
-	ADMIN("Admin"),
+	ADMIN("Administrator"),
 	CUSTOMER("Customer"),
 	COMPANY("Company");
 	

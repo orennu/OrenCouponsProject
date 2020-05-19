@@ -1,24 +1,29 @@
-package com.orenn.coupons.beans;
+ package com.orenn.coupons.beans;
 import com.orenn.coupons.enums.IndustryType;
 
 public class Company {
 	
-	private long companyId;
-	private String companyName;
+	private long id;
+	private String name;
+	private String email;
 	private String phoneNumber;
 	private String address;
 	private IndustryType industry;
 	
-	public Company(long companyId, String companyName, String phoneNumber, String address, IndustryType industry) {
-		this.companyId = companyId;
-		this.companyName = companyName;
+	public Company(long id, String name, String email, String phoneNumber,
+			String address, IndustryType industry) {
+		this.id = id;
+		this.name = name;
+		this.email = email;
 		this.phoneNumber = phoneNumber;
 		this.address = address;
 		this.industry = industry;
 	}
 	
-	public Company(String companyName, String phoneNumber, String address, IndustryType industry) {
-		this.companyName = companyName;
+	public Company(String name, String email, String phoneNumber, String address,
+			IndustryType industry) {
+		this.name = name;
+		this.email = email;
 		this.phoneNumber = phoneNumber;
 		this.address = address;
 		this.industry = industry;
@@ -27,20 +32,28 @@ public class Company {
 	public Company() {
 	}
 
-	public long getCompanyId() {
-		return companyId;
+	public long getId() {
+		return id;
 	}
 
-	public void setCompanyId(long companyId) {
-		this.companyId = companyId;
+	public void setId(long id) {
+		this.id = id;
 	}
 
-	public String getCompanyName() {
-		return companyName;
+	public String getName() {
+		return name;
 	}
 
-	public void setCompanyName(String companyName) {
-		this.companyName = companyName;
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getPhoneNumber() {
@@ -69,8 +82,8 @@ public class Company {
 
 	@Override
 	public String toString() {
-		return "Company [companyId=" + companyId + ", companyName=" + companyName + ", phoneNumber=" + phoneNumber
-				+ ", address=" + address + ", industry=" + industry + "]";
+		return "Company [id=" + id + ", name=" + name + ", email=" + email
+				+ ", phoneNumber=" + phoneNumber + ", address=" + address + ", industry=" + industry + "]";
 	}
 	
 }

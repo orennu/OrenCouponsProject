@@ -1,28 +1,19 @@
 package com.orenn.coupons.beans;
-import java.time.LocalDate;
 
-import com.orenn.coupons.utils.Utils;
+import java.util.Date;
 
 public class Customer {
 	
-	private long customerId;
+	private User user;
 	private String firstName;
 	private String lastName;
-	private String fullName;
 	private String address;
 	private String phoneNumber;
-	private LocalDate dateOfBirth;
+	private Date dateOfBirth;
 	
-	public Customer(long customerId, String firstName, String lastName, String address, String phoneNumber, LocalDate dateOfBirth) {
-		this.customerId = customerId;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.address = address;
-		this.phoneNumber = phoneNumber;
-		this.dateOfBirth = dateOfBirth;
-	}
-
-	public Customer(String firstName, String lastName, String address, String phoneNumber, LocalDate dateOfBirth) {
+	public Customer(User user, String firstName, String lastName, String address,
+			String phoneNumber, Date dateOfBirth) {
+		this.user = user;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.address = address;
@@ -33,12 +24,12 @@ public class Customer {
 	public Customer() {
 	}
 
-	public long getCustomerId() {
-		return customerId;
+	public User getUser() {
+		return user;
 	}
-
-	public void setCustomerId(long customerId) {
-		this.customerId = customerId;
+	
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public String getFirstName() {
@@ -57,14 +48,6 @@ public class Customer {
 		this.lastName = lastName;
 	}
 
-	public String getFullName() {
-		return firstName + " " + lastName;
-	}
-
-	public void setFullName(String fullName) {
-		this.fullName = this.firstName + " " + this.lastName;
-	}
-
 	public String getAddress() {
 		return address;
 	}
@@ -81,19 +64,22 @@ public class Customer {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public LocalDate getDateOfBirth() {
+	public Date getDateOfBirth() {
 		return dateOfBirth;
 	}
 
-	public void setDateOfBirth(LocalDate dateOfBirth) {
+	public void setDateOfBirth(Date dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
-
+	
+	public String getFullName() {
+		return this.firstName + " " + this.lastName;
+	}
+	
 	@Override
 	public String toString() {
-		return "Customer [customerId=" + customerId + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", fullName=" + fullName + ", address=" + address + ", phoneNumber=" + phoneNumber + ", dateOfBirth="
-				+ dateOfBirth + "]";
+		return "Customer [id=" + user.getId() + ", user=" + user + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", address=" + address + ", phoneNumber=" + phoneNumber + ", dateOfBirth=" + dateOfBirth + "]";
 	}
 	
 }
