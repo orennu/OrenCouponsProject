@@ -40,7 +40,7 @@ public class CustomersDao implements ICustomersDao {
 		}
 		catch (SQLException e) {
 			throw new ApplicationException(e, ErrorType.CREATE_ERROR, 
-										String.format("%s, customer %s", ErrorType.CREATE_ERROR.getErrorDescription(), customerId));
+					String.format("%s, customer %s", ErrorType.CREATE_ERROR.getErrorDescription(), customerId));
 		}
 		finally {
 			JdbcUtils.closeResources(connection, preparedStatement);
@@ -69,7 +69,7 @@ public class CustomersDao implements ICustomersDao {
 		}
 		catch (SQLException e) {
 			throw new ApplicationException(e, ErrorType.QUERY_ERROR, 
-										String.format("%s, customer id %s", ErrorType.QUERY_ERROR.getErrorDescription(), customerId));
+					String.format("%s, customer id %s", ErrorType.QUERY_ERROR.getErrorDescription(), customerId));
 		}
 		finally {
 			JdbcUtils.closeResources(connection, preparedStatement, resultSet);
@@ -94,7 +94,7 @@ public class CustomersDao implements ICustomersDao {
 		}
 		catch (SQLException e) {
 			throw new ApplicationException(e, ErrorType.QUERY_ERROR, 
-										String.format("%s, user id %s", ErrorType.QUERY_ERROR.getErrorDescription(), customerId));
+					String.format("%s, user id %s", ErrorType.QUERY_ERROR.getErrorDescription(), customerId));
 		}
 		finally {
 			JdbcUtils.closeResources(connection, preparedStatement, resultSet);
@@ -189,7 +189,7 @@ public class CustomersDao implements ICustomersDao {
 		}
 		catch (SQLException e) {
 			throw new ApplicationException(e, ErrorType.UPDATE_ERROR, 
-										String.format("%s, user id %s", ErrorType.UPDATE_ERROR.getErrorDescription(), customer.getUser().getId()));
+					String.format("%s, user id %s", ErrorType.UPDATE_ERROR.getErrorDescription(), customer.getUser().getId()));
 		}
 		finally {
 			JdbcUtils.closeResources(connection, preparedStatement);
@@ -210,7 +210,8 @@ public class CustomersDao implements ICustomersDao {
 			preparedStatement.executeUpdate();
 		}
 		catch (SQLException e) {
-			throw new ApplicationException(e, ErrorType.DELETE_ERROR, ErrorType.DELETE_ERROR.getErrorDescription() + ", customer id: " + customerId);
+			throw new ApplicationException(e, ErrorType.DELETE_ERROR, 
+					String.format("%s, customer id %s", ErrorType.DELETE_ERROR.getErrorDescription(), customerId));
 		}
 		finally {
 			JdbcUtils.closeResources(connection, preparedStatement);

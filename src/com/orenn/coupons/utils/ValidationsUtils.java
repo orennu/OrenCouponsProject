@@ -50,11 +50,11 @@ public class ValidationsUtils {
 		}
 		if (!isValidLength(address, 2, 255)) {
 			throw new ApplicationException(ErrorType.INVALID_LENGTH_ERROR, 
-										String.format("%s must be between 2 - 255", ErrorType.INVALID_LENGTH_ERROR.getErrorDescription()));
+					String.format("%s must be between 2 - 255", ErrorType.INVALID_LENGTH_ERROR.getErrorDescription()));
 		}
 		if (address.trim().length() < address.length()) {
 			throw new ApplicationException(ErrorType.INVALID_WHITESPACE_ERROR, 
-										String.format("Address %s", ErrorType.INVALID_WHITESPACE_ERROR.getErrorDescription()));
+					String.format("Address %s", ErrorType.INVALID_WHITESPACE_ERROR.getErrorDescription()));
 		}
 		
 		String addressRegex = "[a-zA-Z0-9 .,]+";
@@ -100,12 +100,11 @@ public class ValidationsUtils {
 		String nameRegex = "^[\\p{L}.'-]+$";
 		if (!isMatchingPattern(nameRegex, name)) {
 			throw new ApplicationException(ErrorType.INVALID_CHARS_ERROR, 
-										String.format("%s, name must contain only valid name characters", 
-												ErrorType.INVALID_CHARS_ERROR.getErrorDescription()));
+					String.format("%s, name must contain only valid name characters", ErrorType.INVALID_CHARS_ERROR.getErrorDescription()));
 		}
 		if (name.trim().length() < name.length()) {
 			throw new ApplicationException(ErrorType.INVALID_WHITESPACE_ERROR, 
-										String.format("invalid name, %s", ErrorType.INVALID_WHITESPACE_ERROR.getErrorDescription()));
+					String.format("invalid name, %s", ErrorType.INVALID_WHITESPACE_ERROR.getErrorDescription()));
 		}
 		
 		return true;
@@ -117,17 +116,17 @@ public class ValidationsUtils {
 		}
 		if (!isValidLength(companyName, 2, 20)) {
 			throw new ApplicationException(ErrorType.INVALID_LENGTH_ERROR, 
-										String.format("%s, company name must be 2 - 20 characters", ErrorType.INVALID_LENGTH_ERROR.getErrorDescription()));
+					String.format("%s, company name must be 2 - 20 characters", ErrorType.INVALID_LENGTH_ERROR.getErrorDescription()));
 		}
 		if (companyName.trim().length() < companyName.length()) {
 			throw new ApplicationException(ErrorType.INVALID_WHITESPACE_ERROR, 
-										String.format("Company name %s", ErrorType.INVALID_WHITESPACE_ERROR.getErrorDescription()));
+					String.format("Company name %s", ErrorType.INVALID_WHITESPACE_ERROR.getErrorDescription()));
 		}
 		String nameRegex = "[a-zA-Z0-9 ]+";
 		
 		if (!isMatchingPattern(nameRegex, companyName)) {
 			throw new ApplicationException(ErrorType.INVALID_CHARS_ERROR, 
-										String.format("%s, company name must consist of letters and digits", ErrorType.INVALID_CHARS_ERROR.getErrorDescription()));
+					String.format("%s, company name must consist of letters and digits", ErrorType.INVALID_CHARS_ERROR.getErrorDescription()));
 		}
 		
 		return true;
@@ -136,7 +135,7 @@ public class ValidationsUtils {
 	public static boolean isValidDescription(String description, String item) throws ApplicationException {
 		if (description.trim().length() < description.length()) {
 			throw new ApplicationException(ErrorType.INVALID_WHITESPACE_ERROR, 
-										String.format("%s %s" , item, ErrorType.INVALID_WHITESPACE_ERROR.getErrorDescription()));
+					String.format("%s %s" , item, ErrorType.INVALID_WHITESPACE_ERROR.getErrorDescription()));
 		}
 		String regex = "[a-zA-Z0-9 .,]+";
 		if (!isMatchingPattern(regex, description)) {

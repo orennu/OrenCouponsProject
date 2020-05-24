@@ -45,14 +45,14 @@ public class CouponsDao implements ICouponsDao {
 			
 			if (!resultSet.next()) {
 				throw new ApplicationException(ErrorType.CREATE_ERROR, 
-											String.format("%s, coupon with title %s", ErrorType.CREATE_ERROR.getErrorDescription(), coupon.getTitle()));
+						String.format("%s, coupon with title %s", ErrorType.CREATE_ERROR.getErrorDescription(), coupon.getTitle()));
 			}
 			
 			return resultSet.getLong(1);
 		}
 		catch (SQLException e) {
 			throw new ApplicationException(e, ErrorType.CREATE_ERROR, 
-										String.format("%s, coupon with title %s", ErrorType.CREATE_ERROR.getErrorDescription(), coupon.getTitle()));
+					String.format("%s, coupon with title %s", ErrorType.CREATE_ERROR.getErrorDescription(), coupon.getTitle()));
 		}
 		finally {
 			JdbcUtils.closeResources(connection, preparedStatement, resultSet);
@@ -81,7 +81,7 @@ public class CouponsDao implements ICouponsDao {
 		}
 		catch (SQLException e) {
 			throw new ApplicationException(e, ErrorType.QUERY_ERROR, 
-										String.format("%s, coupon id %", ErrorType.QUERY_ERROR.getErrorDescription(), couponId));
+					String.format("%s, coupon id %", ErrorType.QUERY_ERROR.getErrorDescription(), couponId));
 		}
 		finally {
 			JdbcUtils.closeResources(connection, preparedStatement, resultSet);
@@ -110,7 +110,7 @@ public class CouponsDao implements ICouponsDao {
 		}
 		catch (SQLException e) {
 			throw new ApplicationException(e, ErrorType.QUERY_ERROR, 
-										String.format("%s, coupon id %", ErrorType.QUERY_ERROR.getErrorDescription(), couponId));
+					String.format("%s, coupon id %", ErrorType.QUERY_ERROR.getErrorDescription(), couponId));
 		}
 		finally {
 			JdbcUtils.closeResources(connection, preparedStatement, resultSet);
@@ -135,7 +135,7 @@ public class CouponsDao implements ICouponsDao {
 		}
 		catch (SQLException e) {
 			throw new ApplicationException(e, ErrorType.QUERY_ERROR, 
-										String.format("%s, coupon id %", ErrorType.QUERY_ERROR.getErrorDescription(), couponId));
+					String.format("%s, coupon id %", ErrorType.QUERY_ERROR.getErrorDescription(), couponId));
 		}
 		finally {
 			JdbcUtils.closeResources(connection, preparedStatement, resultSet);
@@ -160,7 +160,7 @@ public class CouponsDao implements ICouponsDao {
 		}
 		catch (SQLException e) {
 			throw new ApplicationException(e, ErrorType.QUERY_ERROR, 
-										String.format("%s, coupon id %", ErrorType.QUERY_ERROR.getErrorDescription(), couponId));
+					String.format("%s, coupon id %", ErrorType.QUERY_ERROR.getErrorDescription(), couponId));
 		}
 		finally {
 			JdbcUtils.closeResources(connection, preparedStatement, resultSet);
@@ -185,7 +185,7 @@ public class CouponsDao implements ICouponsDao {
 		}
 		catch (SQLException e) {
 			throw new ApplicationException(e, ErrorType.QUERY_ERROR, 
-										String.format("%s, coupon id %", ErrorType.QUERY_ERROR.getErrorDescription(), couponId));
+					String.format("%s, coupon id %", ErrorType.QUERY_ERROR.getErrorDescription(), couponId));
 		}
 		finally {
 			JdbcUtils.closeResources(connection, preparedStatement, resultSet);
@@ -346,7 +346,7 @@ public class CouponsDao implements ICouponsDao {
 		}
 		catch (SQLException e) {
 			throw new ApplicationException(e, ErrorType.UPDATE_ERROR, 
-										String.format("%s, coupon id %s", ErrorType.UPDATE_ERROR.getErrorDescription(), coupon.getId()));
+					String.format("%s, coupon id %s", ErrorType.UPDATE_ERROR.getErrorDescription(), coupon.getId()));
 		}
 		finally {
 			JdbcUtils.closeResources(connection, preparedStatement);
@@ -382,7 +382,7 @@ public class CouponsDao implements ICouponsDao {
 		}
 		catch (SQLException e) {
 			throw new ApplicationException(e, ErrorType.UPDATE_ERROR, 
-										String.format("%s, coupon id %s", ErrorType.UPDATE_ERROR.getErrorDescription(), couponId));
+					String.format("%s, coupon id %s", ErrorType.UPDATE_ERROR.getErrorDescription(), couponId));
 		}
 		finally {
 			JdbcUtils.closeResources(connection, preparedStatement);
@@ -405,7 +405,7 @@ public class CouponsDao implements ICouponsDao {
 		}
 		catch (SQLException e) {
 			throw new ApplicationException(e, ErrorType.DELETE_ERROR, 
-										String.format("%s, coupon id %s", ErrorType.DELETE_ERROR.getErrorDescription(), couponId));
+					String.format("%s, coupon id %s", ErrorType.DELETE_ERROR.getErrorDescription(), couponId));
 		}
 		finally {
 			JdbcUtils.closeResources(connection, preparedStatement);
@@ -427,7 +427,7 @@ public class CouponsDao implements ICouponsDao {
 		}
 		catch (SQLException e) {
 			throw new ApplicationException(e, ErrorType.DELETE_ERROR, 
-										String.format("%s, company id %s", ErrorType.DELETE_ERROR.getErrorDescription(), companyId));
+					String.format("%s, company id %s", ErrorType.DELETE_ERROR.getErrorDescription(), companyId));
 		}
 		finally {
 			JdbcUtils.closeResources(connection, preparedStatement);

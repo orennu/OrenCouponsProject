@@ -39,14 +39,14 @@ public class UsersDao implements IUsersDao {
 			
 			if (!resultSet.next()) {
 				throw new ApplicationException(ErrorType.CREATE_ERROR, 
-											String.format("%s, user %s", ErrorType.CREATE_ERROR.getErrorDescription(), user.getUserName()));
+						String.format("%s, user %s", ErrorType.CREATE_ERROR.getErrorDescription(), user.getUserName()));
 			}
 			
 			return resultSet.getLong(1);
 		}
 		catch (SQLException e) {
 			throw new ApplicationException(e, ErrorType.CREATE_ERROR, 
-										String.format("%s, user %s", ErrorType.CREATE_ERROR.getErrorDescription(), user.getUserName()));
+					String.format("%s, user %s", ErrorType.CREATE_ERROR.getErrorDescription(), user.getUserName()));
 		}
 		finally {
 			JdbcUtils.closeResources(connection, preparedStatement, resultSet);
@@ -75,7 +75,7 @@ public class UsersDao implements IUsersDao {
 		}
 		catch (SQLException e) {
 			throw new ApplicationException(e, ErrorType.QUERY_ERROR, 
-										String.format("%s, user id %s", ErrorType.QUERY_ERROR.getErrorDescription(), userId));
+					String.format("%s, user id %s", ErrorType.QUERY_ERROR.getErrorDescription(), userId));
 		}
 		finally {
 			JdbcUtils.closeResources(connection, preparedStatement, resultSet);
@@ -104,7 +104,7 @@ public class UsersDao implements IUsersDao {
 		}
 		catch (SQLException e) {
 			throw new ApplicationException(e, ErrorType.QUERY_ERROR, 
-										String.format("%s, user %s", ErrorType.QUERY_ERROR.getErrorDescription(), userName));
+					String.format("%s, user %s", ErrorType.QUERY_ERROR.getErrorDescription(), userName));
 		}
 		finally {
 			JdbcUtils.closeResources(connection, preparedStatement, resultSet);
@@ -129,7 +129,7 @@ public class UsersDao implements IUsersDao {
 		}
 		catch (SQLException e) {
 			throw new ApplicationException(e, ErrorType.QUERY_ERROR, 
-										String.format("%s, user id %s", ErrorType.QUERY_ERROR.getErrorDescription(), userId));
+					String.format("%s, user id %s", ErrorType.QUERY_ERROR.getErrorDescription(), userId));
 		}
 		finally {
 			JdbcUtils.closeResources(connection, preparedStatement, resultSet);
@@ -154,7 +154,7 @@ public class UsersDao implements IUsersDao {
 		}
 		catch (SQLException e) {
 			throw new ApplicationException(e, ErrorType.QUERY_ERROR, 
-										String.format("%s, user %s", ErrorType.QUERY_ERROR.getErrorDescription(), userName));
+					String.format("%s, user %s", ErrorType.QUERY_ERROR.getErrorDescription(), userName));
 		}
 		finally {
 			JdbcUtils.closeResources(connection, preparedStatement, resultSet);
@@ -300,7 +300,7 @@ public class UsersDao implements IUsersDao {
 		}
 		catch (SQLException e) {
 			throw new ApplicationException(e, ErrorType.UPDATE_ERROR, 
-										String.format("%s, user id %s", ErrorType.UPDATE_ERROR.getErrorDescription(), user.getId()));
+					String.format("%s, user id %s", ErrorType.UPDATE_ERROR.getErrorDescription(), user.getId()));
 		}
 		finally {
 			JdbcUtils.closeResources(connection, preparedStatement);
@@ -324,7 +324,7 @@ public class UsersDao implements IUsersDao {
 		}
 		catch (SQLException e) {
 			throw new ApplicationException(e, ErrorType.UPDATE_ERROR, 
-										String.format("%s, user id %s", ErrorType.UPDATE_ERROR.getErrorDescription(), userId));
+					String.format("%s, user id %s", ErrorType.UPDATE_ERROR.getErrorDescription(), userId));
 		}
 		finally {
 			JdbcUtils.closeResources(connection, preparedStatement);
@@ -346,7 +346,7 @@ public class UsersDao implements IUsersDao {
 		}
 		catch (SQLException e) {
 			throw new ApplicationException(e, ErrorType.DELETE_ERROR, 
-										String.format("%s, user id %s", ErrorType.DELETE_ERROR.getErrorDescription(), userId));
+					String.format("%s, user id %s", ErrorType.DELETE_ERROR.getErrorDescription(), userId));
 		}
 		finally {
 			JdbcUtils.closeResources(connection, preparedStatement);
@@ -368,7 +368,7 @@ public class UsersDao implements IUsersDao {
 		}
 		catch (SQLException e) {
 			throw new ApplicationException(e, ErrorType.DELETE_ERROR, 
-										String.format("%s, company id %s", ErrorType.DELETE_ERROR.getErrorDescription(), companyId));
+					String.format("%s, company id %s", ErrorType.DELETE_ERROR.getErrorDescription(), companyId));
 		}
 		finally {
 			JdbcUtils.closeResources(connection, preparedStatement);

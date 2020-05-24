@@ -38,8 +38,8 @@ public class PurchasesDao implements IPurchasesDao {
 			
 			if (!resultSet.next()) {
 				throw new ApplicationException(ErrorType.CREATE_ERROR, 
-											String.format("%s, purchase with coupon id %s and customer id %s", 
-													ErrorType.CREATE_ERROR.getErrorDescription(), purchase.getCouponId(), purchase.getCustomerId()));
+						String.format("%s, purchase with coupon id %s and customer id %s", 
+								ErrorType.CREATE_ERROR.getErrorDescription(), purchase.getCouponId(), purchase.getCustomerId()));
 			}
 			
 			return resultSet.getLong(1);
@@ -130,7 +130,7 @@ public class PurchasesDao implements IPurchasesDao {
 		}
 		catch (SQLException e) {
 			throw new ApplicationException(e, ErrorType.QUERY_ERROR, 
-										String.format("%s, purchase id %s", ErrorType.QUERY_ERROR.getErrorDescription(), purchaseId));
+					String.format("%s, purchase id %s", ErrorType.QUERY_ERROR.getErrorDescription(), purchaseId));
 		}
 		finally {
 			JdbcUtils.closeResources(connection, preparedStatement, resultSet);
@@ -159,7 +159,7 @@ public class PurchasesDao implements IPurchasesDao {
 		}
 		catch (SQLException e) {
 			throw new ApplicationException(e, ErrorType.QUERY_ERROR, 
-										String.format("%s, purchase date %s", ErrorType.QUERY_ERROR.getErrorDescription(), purchaseDate));
+					String.format("%s, purchase date %s", ErrorType.QUERY_ERROR.getErrorDescription(), purchaseDate));
 		}
 		finally {
 			JdbcUtils.closeResources(connection, preparedStatement, resultSet);
@@ -187,7 +187,7 @@ public class PurchasesDao implements IPurchasesDao {
 		}
 		catch (SQLException e) {
 			throw new ApplicationException(e, ErrorType.QUERY_ERROR, 
-										String.format("%s, customre id %s", ErrorType.QUERY_ERROR.getErrorDescription(), customerId));
+					String.format("%s, customre id %s", ErrorType.QUERY_ERROR.getErrorDescription(), customerId));
 		}
 		finally {
 			JdbcUtils.closeResources(connection, preparedStatement, resultSet);
@@ -215,7 +215,7 @@ public class PurchasesDao implements IPurchasesDao {
 		}
 		catch (SQLException e) {
 			throw new ApplicationException(e, ErrorType.QUERY_ERROR, 
-										String.format("%s, coupon id %s", ErrorType.QUERY_ERROR.getErrorDescription(), couponId));
+					String.format("%s, coupon id %s", ErrorType.QUERY_ERROR.getErrorDescription(), couponId));
 		}
 		finally {
 			JdbcUtils.closeResources(connection, preparedStatement, resultSet);
@@ -365,7 +365,7 @@ public class PurchasesDao implements IPurchasesDao {
 		}
 		catch (SQLException e) {
 			throw new ApplicationException(e, ErrorType.DELETE_ERROR, 
-										String.format("%s, purchase id %s", ErrorType.DELETE_ERROR.getErrorDescription(), purchaseId));
+					String.format("%s, purchase id %s", ErrorType.DELETE_ERROR.getErrorDescription(), purchaseId));
 		}
 		finally {
 			JdbcUtils.closeResources(connection, preparedStatement);
@@ -387,7 +387,7 @@ public class PurchasesDao implements IPurchasesDao {
 		}
 		catch (SQLException e) {
 			throw new ApplicationException(e, ErrorType.DELETE_ERROR, 
-										String.format("%s, customer id %s", ErrorType.DELETE_ERROR.getErrorDescription(), customerId));
+					String.format("%s, customer id %s", ErrorType.DELETE_ERROR.getErrorDescription(), customerId));
 		}
 		finally {
 			JdbcUtils.closeResources(connection, preparedStatement);
